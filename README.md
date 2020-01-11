@@ -1,6 +1,6 @@
 # CakeSoftDelete plugin for CakePHP
 
-[![Build status](https://api.travis-ci.org/alusev/cakephp-soft-delete.png?branch=master)](https://travis-ci.org/alusev/cakephp-soft-delete)
+[![Build Status](https://travis-ci.org/alusev/cakephp-soft-delete.svg?branch=master)](https://travis-ci.org/alusev/cakephp-soft-delete)
 
 This is a fork of PGBI/cakephp3-soft-delete
 
