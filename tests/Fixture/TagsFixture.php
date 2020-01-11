@@ -13,7 +13,7 @@ class TagsTable extends Table
 
     protected $softDeleteField = 'deleted_date';
 
-    public function initialize(array $config)
+    public function initialize(array $config): void
     {
         $this->belongsToMany('Posts', [
             'through' => 'PostsTags',
@@ -26,12 +26,13 @@ class TagsTable extends Table
 }
 
 
-class TagsFixture extends TestFixture {
+class TagsFixture extends TestFixture
+{
 
     public $fields = [
-        'id'          => ['type' => 'integer'],
-        'name'     => ['type' => 'string'],
-        'deleted_date'     => ['type' => 'datetime', 'default' => null, 'null' => true],
+        'id' => ['type' => 'integer'],
+        'name' => ['type' => 'string'],
+        'deleted_date' => ['type' => 'datetime', 'default' => null, 'null' => true],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id']]
         ]
