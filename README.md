@@ -2,6 +2,8 @@
 
 [![Build status](https://api.travis-ci.org/PGBI/cakephp3-soft-delete.png?branch=master)](https://travis-ci.org/PGBI/cakephp3-soft-delete)
 
+This is a form of PGBI/cakephp3-soft-delete
+
 ## Purpose
 
 This Cakephp plugin enables you to make your models soft deletable.
@@ -9,7 +11,7 @@ When soft deleting an entity, it is not actually removed from your database. Ins
 
 ## Requirements
 
-This plugins has been developed for cakephp 3.x.
+This plugins has been developed for cakephp 4.x.
 
 ## Installation
 
@@ -18,7 +20,7 @@ You can install this plugin into your CakePHP application using [composer](http:
 Update your composer file to include this plugin:
 
 ```
-composer require pgbi/cakephp3-soft-delete "~1.0"
+composer require ealus/cakephp-soft-delete "~1.0"
 ```
 
 ## Configuration
