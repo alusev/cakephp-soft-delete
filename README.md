@@ -2,7 +2,7 @@
 
 [![Build status](https://api.travis-ci.org/PGBI/cakephp3-soft-delete.png?branch=master)](https://travis-ci.org/PGBI/cakephp3-soft-delete)
 
-This is a form of PGBI/cakephp3-soft-delete
+This is a fork of PGBI/cakephp3-soft-delete
 
 ## Purpose
 
@@ -20,7 +20,7 @@ You can install this plugin into your CakePHP application using [composer](http:
 Update your composer file to include this plugin:
 
 ```
-composer require ealus/cakephp-soft-delete "~1.0"
+composer require ealus/cakephp-soft-delete
 ```
 
 ## Configuration
