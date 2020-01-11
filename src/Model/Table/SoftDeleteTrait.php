@@ -1,4 +1,5 @@
 <?php
+
 namespace SoftDelete\Model\Table;
 
 use Cake\ORM\RulesChecker;
@@ -6,7 +7,8 @@ use Cake\Datasource\EntityInterface;
 use SoftDelete\Error\MissingColumnException;
 use SoftDelete\ORM\Query;
 
-trait SoftDeleteTrait {
+trait SoftDeleteTrait
+{
 
     /**
      * Get the configured deletion field
@@ -34,7 +36,7 @@ trait SoftDeleteTrait {
         return $field;
     }
 
-    public function query()
+    public function query(): \Cake\ORM\Query
     {
         return new Query($this->getConnection(), $this);
     }
@@ -47,11 +49,11 @@ trait SoftDeleteTrait {
      *
      * @param \Cake\DataSource\EntityInterface $entity The entity to soft delete.
      * @param \ArrayObject $options The options for the delete.
+     * @return bool success
      * @throws \InvalidArgumentException if there are no primary key values of the
      * passed entity
-     * @return bool success
      */
-    protected function _processDelete($entity, $options)
+    protected function _processDelete($entity, $options): bool
     {
         if ($entity->isNew()) {
             return false;
@@ -105,7 +107,7 @@ trait SoftDeleteTrait {
      * Soft deletes all records matching `$conditions`.
      * @return int number of affected rows.
      */
-    public function deleteAll($conditions)
+    public function deleteAll($conditions): int
     {
         $query = $this->query()
             ->update()
@@ -122,7 +124,7 @@ trait SoftDeleteTrait {
      */
     public function hardDelete(EntityInterface $entity)
     {
-        if(!$this->delete($entity)) {
+        if (!$this->delete($entity)) {
             return false;
         }
         $primaryKey = (array)$this->getPrimaryKey();
