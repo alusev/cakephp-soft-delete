@@ -17,12 +17,12 @@ class Query extends CakeQuery
      * 
      * @return void
      */
-    public function triggerBeforeFind()
+    public function triggerBeforeFind(): void
     {
         if (!$this->_beforeFindFired && $this->_type === 'select') {
             parent::triggerBeforeFind();
 
-            $repository = $this->repository();
+            $repository = $this->getRepository();
             $options = $this->getOptions();
 
             if (!is_array($options) || !in_array('withDeleted', $options)) {
