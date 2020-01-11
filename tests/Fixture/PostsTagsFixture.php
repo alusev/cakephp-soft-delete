@@ -2,22 +2,7 @@
 
 namespace SoftDelete\Test\Fixture;
 
-use Cake\ORM\Table;
 use Cake\TestSuite\Fixture\TestFixture;
-
-use SoftDelete\Model\Table\SoftDeleteTrait;
-
-class PostsTagsTable extends Table
-{
-    use SoftDeleteTrait;
-
-    public function initialize(array $config): void
-    {
-        $this->belongsTo('Tags');
-        $this->belongsTo('Posts');
-    }
-}
-
 
 class PostsTagsFixture extends TestFixture
 {

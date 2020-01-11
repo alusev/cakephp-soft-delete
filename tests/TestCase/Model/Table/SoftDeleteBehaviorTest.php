@@ -2,8 +2,8 @@
 
 namespace SoftDelete\Test\TestCase\Model\Table;
 
-use Cake\TestSuite\TestCase;
 use Cake\ORM\TableRegistry;
+use Cake\TestSuite\TestCase;
 
 /**
  * App\Model\Behavior\SoftDeleteBehavior Test Case
@@ -21,10 +21,10 @@ class SoftDeleteBehaviorTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'plugin.SoftDelete.users',
-        'plugin.SoftDelete.posts',
-        'plugin.SoftDelete.tags',
-        'plugin.SoftDelete.posts_tags'
+        'plugin.SoftDelete.Users',
+        'plugin.SoftDelete.Posts',
+        'plugin.SoftDelete.Tags',
+        'plugin.SoftDelete.PostsTags'
     ];
 
     /**
@@ -36,10 +36,10 @@ class SoftDeleteBehaviorTest extends TestCase
     {
         parent::setUp();
 
-        $this->usersTable = TableRegistry::getTableLocator()->get('Users', ['className' => 'SoftDelete\Test\Fixture\UsersTable']);
-        $this->postsTable = TableRegistry::getTableLocator()->get('Posts', ['className' => 'SoftDelete\Test\Fixture\PostsTable']);
-        $this->tagsTable = TableRegistry::getTableLocator()->get('Tags', ['className' => 'SoftDelete\Test\Fixture\TagsTable']);
-        $this->postsTagsTable = TableRegistry::getTableLocator()->get('PostsTags', ['className' => 'SoftDelete\Test\Fixture\PostsTagsTable']);
+        $this->usersTable = TableRegistry::getTableLocator()->get('Users', ['className' => \SoftDelete\Test\Table\UsersTable::class]);
+        $this->postsTable = TableRegistry::getTableLocator()->get('Posts', ['className' => \SoftDelete\Test\Table\PostsTable::class]);
+        $this->tagsTable = TableRegistry::getTableLocator()->get('Tags', ['className' => \SoftDelete\Test\Table\TagsTable::class]);
+        $this->postsTagsTable = TableRegistry::getTableLocator()->get('PostsTags', ['className' => \SoftDelete\Test\Table\PostsTagsTable::class]);
     }
 
     /**
@@ -61,7 +61,7 @@ class SoftDeleteBehaviorTest extends TestCase
     public function testFind()
     {
         $user = $this->usersTable->get(1);
-        $user->deleted = date('Y-m-d H:i:s');
+        $user->deleted = date('Y - m - d H:i:s');
         $this->usersTable->save($user);
 
         $user = $this->usersTable->find()->where(['id' => 1])->first();
@@ -75,7 +75,7 @@ class SoftDeleteBehaviorTest extends TestCase
     public function testDynamicFinder()
     {
         $user = $this->usersTable->get(1);
-        $user->deleted = date('Y-m-d H:i:s');
+        $user->deleted = date('Y - m - d H:i:s');
         $this->usersTable->save($user);
 
         $user = $this->usersTable->findById(1)->first();
@@ -284,11 +284,10 @@ class SoftDeleteBehaviorTest extends TestCase
 
     /**
      * When a configured field is missing from the table, an exception should be thrown
-     *
-     * @expectedException \SoftDelete\Error\MissingColumnException
      */
     public function testMissingColumn()
     {
+        $this->expectException(\SoftDelete\Error\MissingColumnException::class);
         $this->postsTable->softDeleteField = 'foo';
         $post = $this->postsTable->get(1);
         $this->postsTable->delete($post);

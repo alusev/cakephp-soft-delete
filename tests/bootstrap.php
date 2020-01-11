@@ -1,7 +1,7 @@
 <?php
+
 use Cake\Cache\Cache;
 use Cake\Core\Configure;
-use Cake\Core\Plugin;
 use Cake\Datasource\ConnectionManager;
 use Cake\Log\Log;
 
@@ -78,10 +78,10 @@ if (!getenv('db_class')) {
 
 ConnectionManager::setConfig('test', [
     'className' => 'Cake\Database\Connection',
-    'driver' => getenv('db_class'),
-    'dsn' => getenv('db_dsn'),
-    'database' => getenv('db_database'),
-    'username' => getenv('db_login'),
+    'driver' => env('db_class'),
+    'dsn' => env('db_dsn'),
+    'database' => env('db_database', 'test'),
+    'username' => env('db_login'),
     'password' => getenv('db_password'),
     'timezone' => 'UTC'
 ]);

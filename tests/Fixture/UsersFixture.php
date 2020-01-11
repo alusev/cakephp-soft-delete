@@ -3,26 +3,9 @@
 namespace SoftDelete\Test\Fixture;
 
 use Cake\TestSuite\Fixture\TestFixture;
-use Cake\ORM\Table;
-
-use SoftDelete\Model\Table\SoftDeleteTrait;
-
-class UsersTable extends Table
-{
-    use SoftDeleteTrait;
-
-    public function initialize(array $config): void
-    {
-        $this->hasMany('Posts', [
-            'dependent' => true,
-            'cascadeCallbacks' => true,
-        ]);
-    }
-}
 
 class UsersFixture extends TestFixture
 {
-
     public $fields = [
         'id' => ['type' => 'integer'],
         'posts_count' => ['type' => 'integer', 'default' => '0', 'null' => false],
